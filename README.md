@@ -92,7 +92,7 @@ docker run -p 12445:12445 -d home
 
 ### 网站链接
 
-在 `src/assets/siteLinks.json` 中可以自定义网站链接（以指向自己的网站）:
+在 `src/assets/siteLinks.js` 中可以自定义网站链接（以指向自己的网站）:
 
 ```json
 {
@@ -134,7 +134,7 @@ const siteIcon = {
 
 ### 社交链接
 
-在 `src/assets/socialLinks.json` 中可以自定义社交链接。
+在 `src/assets/socialLinks.js` 中可以自定义社交链接。
 
 ### 天气
 

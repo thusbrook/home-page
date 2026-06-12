@@ -3,14 +3,14 @@
     <Transition name="fade" mode="out-in">
       <div v-if="!store.playerState || !store.playerLrcShow" class="power">
         <span>
-          <span :class="startYear < fullYear ? 'c-hidden' : 'hidden'">Copyright&nbsp;</span>
-          &copy;
+          <!-- <span :class="startYear < fullYear ? 'c-hidden' : 'hidden'">Copyright&nbsp;</span> -->
+          <a :href="siteUrl">{{ siteAuthor }}</a>
+          <span>&nbsp;&copy;</span>
           <span v-if="startYear < fullYear" class="site-start">
             {{ startYear }}
             -
           </span>
           {{ fullYear }}
-          <a :href="siteUrl">{{ siteAuthor }}</a>
         </span>
         <!-- 站点备案 -->
         <span>

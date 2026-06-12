@@ -47,7 +47,7 @@ import { Link, Blog, CompactDisc, Cloud, Compass, Book, Fire, LaptopCode } from 
 import { mainStore } from "@/store";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination, Mousewheel } from "swiper/modules";
-import siteLinks from "@/assets/siteLinks.json";
+import siteLinks from "@/assets/siteLinks";
 
 const store = mainStore();
 
