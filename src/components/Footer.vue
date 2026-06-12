@@ -4,7 +4,7 @@
       <div v-if="!store.playerState || !store.playerLrcShow" class="power">
         <span>
           <!-- <span :class="startYear < fullYear ? 'c-hidden' : 'hidden'">Copyright&nbsp;</span> -->
-          <a :href="siteUrl">{{ siteAuthor }}</a>
+          <a class="author" :href="siteUrl">{{ siteAuthor }}</a>
           <span>&nbsp;&copy;</span>
           <span v-if="startYear < fullYear" class="site-start">
             {{ startYear }}
@@ -74,6 +74,9 @@ const siteUrl = computed(() => {
   // 文字不换行
   word-break: keep-all;
   white-space: nowrap;
+  .author {
+    font-weight: "Pacifico-Regular";
+  }
   .power {
     animation: fade 0.3s;
   }

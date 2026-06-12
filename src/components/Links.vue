@@ -35,7 +35,7 @@
           </el-col>
         </el-row>
       </SwiperSlide>
-      <div class="swiper-pagination" />
+      <!-- <div class="swiper-pagination" /> -->
     </Swiper>
   </div>
 </template>
@@ -89,7 +89,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .links {
   .line {
-    margin: 2rem 0.25rem 1rem;
+    padding: 2rem 0.25rem 1rem;
     font-size: 1.1rem;
     display: flex;
     align-items: center;
@@ -103,7 +103,7 @@ onMounted(() => {
   .swiper {
     left: -10px;
     width: calc(100% + 20px);
-    padding: 5px 10px 0;
+    padding: 0 10px 0;
     z-index: 0;
     .swiper-slide {
       height: 100%;
@@ -134,7 +134,7 @@ onMounted(() => {
   .link-all {
     height: 220px;
     .item {
-      height: 100px;
+      height: 120px;
       width: 100%;
       display: flex;
       align-items: center;

@@ -40,6 +40,7 @@
     "unplugin-vue-components": "^0.22.12",
     "vite": "^4.5.3",
     "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-pwa": "^0.14.7"
+    "vite-plugin-pwa": "^0.14.7",
+    "webfont": "^11.2.26"
   }
 }

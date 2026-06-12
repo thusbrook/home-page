@@ -35,7 +35,8 @@ const siteUrl = computed(() => {
 .right {
   // flex: 1 0 0%;
   width: 50%;
-  margin-left: 0.75rem;
+  height: 60vh;
+  max-height: 480px;
   .logo {
     width: 100%;
     font-family: "Pacifico-Regular";
@@ -57,7 +58,7 @@ const siteUrl = computed(() => {
       top: 43.26px; // 721px * 0.06
     }
     @media (max-width: 390px) {
-        width: 391px;
+      width: 391px;
     }
   }
   @media (max-width: 720px) {

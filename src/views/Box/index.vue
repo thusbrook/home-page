@@ -10,7 +10,7 @@
         @click="store.boxOpenState = false"
       />
     </transition>
-    <transition name="el-fade-in-linear">
+    <!-- <transition name="el-fade-in-linear">
       <setting-two
         class="setting"
         theme="filled"
@@ -19,20 +19,18 @@
         v-show="closeShow"
         @click="store.setOpenState = true"
       />
-    </transition>
+    </transition> -->
     <div class="content">
       <!-- 可在此处自定义任意内容 -->
       <TimeCapsule />
-      <MoreContent />
     </div>
   </div>
 </template>
 
 <script setup>
-import { CloseOne, SettingTwo } from "@icon-park/vue-next";
+import { CloseOne } from "@icon-park/vue-next";
 import { mainStore } from "@/store";
 import TimeCapsule from "@/components/TimeCapsule.vue";
-import MoreContent from "@/components/MoreContent.vue";
 
 const store = mainStore();
 const closeShow = ref(false);
@@ -41,7 +39,6 @@ const closeShow = ref(false);
 <style lang="scss" scoped>
 .box {
   flex: 1 0 0%;
-  margin-left: 0.75rem;
   height: 80%;
   max-width: 50%;
   position: relative;
