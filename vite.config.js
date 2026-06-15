@@ -34,19 +34,24 @@ export default ({ mode }) =>
             /^\/home-page-assets\//, // 构建产物静态资源
             /^\/home-page-font\//, // 字体文件
             /^\/home-page-images\//, // 图片资源
+            /^\/assets\//, // nginx 原有的 assets 目录映射（非本应用，交给 nginx）
             // 含文件后缀的请求（如 .xml / .txt / .html / .webmanifest 等静态文件）
             /\/[^/?]+\.[^/]+$/,
           ],
           runtimeCaching: [
             {
-              urlPattern: /(.*?)\.(js|css|woff2|woff|ttf)/, // js / css 静态资源缓存
+              // 仅缓存本应用自己的 js / css / 字体（限定在 home-page-* 目录），
+              // 避免拦截 nginx 其他路径下的同类资源
+              urlPattern: /\/home-page-(assets|font)\/.*\.(js|css|woff2|woff|ttf)$/,
               handler: "CacheFirst",
               options: {
                 cacheName: "js-css-cache",
               },
             },
             {
-              urlPattern: /(.*?)\.(png|jpe?g|svg|gif|bmp|psd|tiff|tga|eps)/, // 图片缓存
+              // 仅缓存本应用自己的图片（限定在 home-page-images 目录）
+              urlPattern:
+                /\/home-page-(assets|images)\/.*\.(png|jpe?g|svg|gif|bmp|psd|tiff|tga|eps)$/,
               handler: "CacheFirst",
               options: {
                 cacheName: "image-cache",
