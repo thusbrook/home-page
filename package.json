@@ -10,6 +10,7 @@
     "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
+    "deploy": "node ./tools/deploy.js",
     "format": "prettier --write src/",
     "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts,.vue --fix"
   },
