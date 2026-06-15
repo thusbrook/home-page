@@ -25,6 +25,18 @@ export default ({ mode }) =>
         workbox: {
           skipWaiting: true,
           clientsClaim: true,
+          // SPA 单页路由回退到 index.html
+          navigateFallback: "/index.html",
+          // 以下路径不走 SPA 回退，交给 nginx 处理（避免破坏其他 location 映射）
+          // 仅 dist 内的真实静态目录（home-page-assets / home-page-font / home-page-images）及带后缀的文件被排除，
+          // 其余 navigation 请求仍回退到 index.html 由前端路由处理
+          navigateFallbackDenylist: [
+            /^\/home-page-assets\//, // 构建产物静态资源
+            /^\/home-page-font\//, // 字体文件
+            /^\/home-page-images\//, // 图片资源
+            // 含文件后缀的请求（如 .xml / .txt / .html / .webmanifest 等静态文件）
+            /\/[^/?]+\.[^/]+$/,
+          ],
           runtimeCaching: [
             {
               urlPattern: /(.*?)\.(js|css|woff2|woff|ttf)/, // js / css 静态资源缓存
@@ -52,37 +64,37 @@ export default ({ mode }) =>
           background_color: "#424242",
           icons: [
             {
-              src: "/images/icon/48.png",
+              src: "/home-page-images/icon/48.png",
               sizes: "48x48",
               type: "image/png",
             },
             {
-              src: "/images/icon/72.png",
+              src: "/home-page-images/icon/72.png",
               sizes: "72x72",
               type: "image/png",
             },
             {
-              src: "/images/icon/96.png",
+              src: "/home-page-images/icon/96.png",
               sizes: "96x96",
               type: "image/png",
             },
             {
-              src: "/images/icon/128.png",
+              src: "/home-page-images/icon/128.png",
               sizes: "128x128",
               type: "image/png",
             },
             {
-              src: "/images/icon/144.png",
+              src: "/home-page-images/icon/144.png",
               sizes: "144x144",
               type: "image/png",
             },
             {
-              src: "/images/icon/192.png",
+              src: "/home-page-images/icon/192.png",
               sizes: "192x192",
               type: "image/png",
             },
             {
-              src: "/images/icon/512.png",
+              src: "/home-page-images/icon/512.png",
               sizes: "512x512",
               type: "image/png",
             },
@@ -106,13 +118,15 @@ export default ({ mode }) =>
     css: {
       preprocessorOptions: {
         scss: {
-          api: 'modern',
+          api: "modern",
           additionalData: `@use "./src/style/global.scss" as *;`,
           silenceDeprecations: ["legacy-js-api"],
         },
       },
     },
     build: {
+      // 构建产物静态资源目录，加 home-page 前缀
+      assetsDir: "home-page-assets",
       minify: "terser",
       terserOptions: {
         compress: {
