@@ -2,7 +2,10 @@
   <!-- 基本信息 -->
   <!-- Logo -->
   <div class="logo">
-    <img class="logo-img" :src="siteLogo" alt="logo" />
+    <!-- <img class="logo-img" :src="siteLogo" alt="logo" /> -->
+    <div class="logo-img">
+      <Clock></Clock>
+    </div>
     <div :class="{ name: true, 'text-hidden': true, long: siteUrl[0].length >= 6 }">
       <span class="bg">{{ siteUrl[0] }}</span>
       <span class="sm">.{{ siteUrl[1] }}</span>
@@ -33,10 +36,11 @@ import { Icon } from "@vicons/utils";
 import { QuoteLeft, QuoteRight } from "@vicons/fa";
 import { Error } from "@icon-park/vue-next";
 import { mainStore } from "@/store";
+import Clock from "./Clock.vue";
 const store = mainStore();
 
 // 主页站点logo
-const siteLogo = import.meta.env.VITE_SITE_MAIN_LOGO;
+// const siteLogo = import.meta.env.VITE_SITE_MAIN_LOGO;
 // 站点链接
 const siteUrl = computed(() => {
   const url = import.meta.env.VITE_SITE_URL;
@@ -99,18 +103,25 @@ watch(
     width: 120px;
   }
   .name {
+    display: flex;
+    align-items: flex-end;
     width: 100%;
+    height: 120px;
     padding-left: 22px;
+    padding-bottom: 1em;
     transform: translateY(-8px);
     font-family: "Pacifico-Regular";
+    line-height: 1;
 
     .bg {
       font-size: 4rem;
+      line-height: 1;
     }
 
     .sm {
       margin-left: 6px;
       font-size: 2rem;
+      line-height: 1;
       @media (min-width: 721px) and (max-width: 789px) {
         display: none;
       }
