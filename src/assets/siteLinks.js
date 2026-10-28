@@ -2,12 +2,7 @@ export default [
   {
     icon: "Blog",
     name: "博客",
-    link: "https://www.thusrock.com/blog",
-  },
-  {
-    icon: "Cloud",
-    name: "网盘",
-    link: "https://www.thusrock.com/storage",
+    link: "https://blog.thusrock.com",
   },
   // {
   //   icon: "CompactDisc",
