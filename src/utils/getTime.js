@@ -60,11 +60,23 @@ export const getTimeCapsule = () => {
       percentage: percentage.toFixed(2),
     };
   };
+  const birthDate = dayjs("1991-12-15");
+  const lifeEndDate = birthDate.add(73, "year");
+  const lifeTotal = lifeEndDate.diff(birthDate, "day");
+  const lifePassed = Math.min(Math.max(now.startOf("day").diff(birthDate, "day"), 0), lifeTotal);
+
   return {
     day: getDifference("day"),
     week: getDifference("week"),
     month: getDifference("month"),
     year: getDifference("year"),
+    life: {
+      name: "人生",
+      total: lifeTotal,
+      passed: lifePassed,
+      remaining: lifeTotal - lifePassed,
+      percentage: ((lifePassed / lifeTotal) * 100).toFixed(2),
+    },
   };
 };
 
