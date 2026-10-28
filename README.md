@@ -74,6 +74,20 @@ pnpm build
 
 > 构建完成后，静态资源会在 **`dist` 目录** 中生成，可将 **`dist` 文件夹下的文件**上传至服务器，也可使用 `Vercel` 等托管平台一键导入并自动部署
 
+#### 复制到 Finder 挂载的 WebDAV（macOS）
+
+在 Finder 中按 `Command+K`，连接 `https://webdav.thusrock.com/home-page/` 并完成登录，然后运行：
+
+```bash
+# 将已有 dist 构建产物复制到 WebDAV
+pnpm deploy:webdav
+
+# 或者先构建再复制
+pnpm build && pnpm deploy:webdav
+```
+
+脚本会根据 WebDAV 地址自动识别实际挂载路径，无需固定磁盘名称。复制的是 `dist` 内的文件（包括隐藏文件，但排除 macOS 元数据 `.DS_Store` 和 `._*`），不会额外创建 `dist` 子目录；同名文件按内容校验并直接覆盖，避免 Finder WebDAV 不支持临时文件重命名的问题，不删除目标中的其他文件。直接覆盖不是原子操作，传输中断时目标文件可能不完整，请重新执行命令完成复制。脚本不保存账号密码；未挂载、构建产物缺失或复制失败时会报错退出。原有 `pnpm deploy` SSH 部署命令保持不变。
+
 ### ⚙️ Docker 部署
 
 > 安装及配置 Docker 将不在此处说明，请自行解决
