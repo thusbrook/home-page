@@ -15,13 +15,12 @@
               {{ tag === "day" ? "小时" : "天" }}
             </template>
           </span>
-          <span v-if="tag !== 'life'" class="remaining">
+          <span class="remaining">
             剩余&nbsp;{{ item.remaining }}&nbsp;{{ tag === "day" ? "小时" : "天" }}
           </span>
         </div>
         <el-progress
           :text-inside="true"
-          :show-text="tag !== 'life'"
           :stroke-width="20"
           :percentage="parseFloat(item.percentage)"
         />
