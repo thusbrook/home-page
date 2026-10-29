@@ -8,15 +8,23 @@
       <div v-for="(item, tag, index) in timeData" :key="index" class="capsule-item">
         <div class="item-title">
           <span class="percentage">
-            {{ item.name }}已度过
-            <strong>{{ item.passed }}</strong>
-            {{ tag === "day" ? "小时" : "天" }}
+            <template v-if="tag === 'life'">{{ item.name }}进度</template>
+            <template v-else>
+              {{ item.name }}已度过
+              <strong>{{ item.passed }}</strong>
+              {{ tag === "day" ? "小时" : "天" }}
+            </template>
           </span>
-          <span class="remaining">
+          <span v-if="tag !== 'life'" class="remaining">
             剩余&nbsp;{{ item.remaining }}&nbsp;{{ tag === "day" ? "小时" : "天" }}
           </span>
         </div>
-        <el-progress :text-inside="true" :stroke-width="20" :percentage="parseFloat(item.percentage)" />
+        <el-progress
+          :text-inside="true"
+          :show-text="tag !== 'life'"
+          :stroke-width="20"
+          :percentage="parseFloat(item.percentage)"
+        />
       </div>
       <!-- 建站日期 -->
       <div v-if="store.siteStartShow" class="capsule-item start">

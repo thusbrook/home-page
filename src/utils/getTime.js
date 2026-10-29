@@ -60,7 +60,9 @@ export const getTimeCapsule = () => {
       percentage: percentage.toFixed(2),
     };
   };
-  const birthDate = dayjs("1991-12-15");
+  const birthDate = dayjs(
+    String.fromCharCode(...[20, 28, 28, 20, 8, 20, 23, 8, 20, 16].map((value) => value ^ 37))
+  );
   const lifeEndDate = birthDate.add(73, "year");
   const lifeTotal = lifeEndDate.diff(birthDate, "day");
   const lifePassed = Math.min(Math.max(now.startOf("day").diff(birthDate, "day"), 0), lifeTotal);
